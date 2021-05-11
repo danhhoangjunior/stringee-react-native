@@ -10,8 +10,7 @@ const iOS = Platform.OS === "ios" ? true : false;
 
 export default class extends Component {
     static propTypes = {
-        eventHandlers: PropTypes.object,
-        clientId: PropTypes.string
+        eventHandlers: PropTypes.object
     };
 
     constructor(props) {
@@ -19,9 +18,6 @@ export default class extends Component {
         this._events = [];
         this._subscriptions = [];
         this._eventEmitter = new NativeEventEmitter(RNStringeeCall2);
-
-        this.makeCall = this.makeCall.bind(this);
-        this.initAnswer = this.initAnswer.bind(this);
     }
 
     componentWillMount() {
@@ -68,11 +64,11 @@ export default class extends Component {
     }
 
     makeCall(parameters: string, callback: RNStringeeEventCallback) {
-        RNStringeeCall2.makeCall(this.props.clientId, parameters, callback);
+        RNStringeeCall2.makeCall(parameters, callback);
     }
 
     initAnswer(callId: string, callback: RNStringeeEventCallback) {
-        RNStringeeCall2.initAnswer(this.props.clientId, callId, callback);
+        RNStringeeCall2.initAnswer(callId, callback);
     }
 
     answer(callId: string, callback: RNStringeeEventCallback) {
@@ -85,10 +81,6 @@ export default class extends Component {
 
     reject(callId: string, callback: RNStringeeEventCallback) {
         RNStringeeCall2.reject(callId, callback);
-    }
-
-    getCallStats(callId: string, callback: RNStringeeEventCallback) {
-        RNStringeeCall2.getCallStats(this.props.clientId, callId, callback);
     }
 
     switchCamera(callId: string, callback: RNStringeeEventCallback) {
