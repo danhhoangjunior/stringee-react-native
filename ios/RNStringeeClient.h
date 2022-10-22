@@ -16,8 +16,30 @@
 
 #import <Stringee/Stringee.h>
 
+// Connect
+static NSString *didConnect               = @"didConnect";
+static NSString *didDisConnect            = @"didDisConnect";
+static NSString *didFailWithError         = @"didFailWithError";
+static NSString *requestAccessToken       = @"requestAccessToken";
+
+// Call 1-1
+static NSString *incomingCall               = @"incomingCall";
+static NSString *incomingCall2              = @"incomingCall2";
+static NSString *didReceiveCustomMessage    = @"didReceiveCustomMessage";
+
+// Chat
+static NSString *objectChangeNotification   = @"objectChangeNotification";
+
+// Live-chat
+static NSString *didReceiveChatRequest          = @"didReceiveChatRequest";
+static NSString *didReceiveTransferChatRequest  = @"didReceiveTransferChatRequest";
+static NSString *timeoutAnswerChat              = @"timeoutAnswerChat";
+static NSString *timeoutInQueue                 = @"timeoutInQueue";
+static NSString *conversationEnded              = @"conversationEnded";
+static NSString *userBeginTyping                = @"userBeginTyping";
+static NSString *userEndTyping                  = @"userEndTyping";
+
 @interface RNStringeeClient : RCTEventEmitter <RCTBridgeModule, StringeeConnectionDelegate, StringeeIncomingCallDelegate>
 
-@property (strong, nonatomic) StringeeClient *client;
 
 @end
